@@ -1,0 +1,42 @@
+buildscript {
+	ext {
+		springBootVersion = '2.1.1.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") 
+
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+
+group = 'com.terima.devp'
+version = '1.0'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation('org.springframework.boot:spring-boot-starter-batch')
+	implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+	implementation('org.springframework.boot:spring-boot-starter-hateoas')
+	implementation('org.springframework.boot:spring-boot-starter-jersey')
+	implementation('org.springframework.boot:spring-boot-starter-mail')
+	implementation('org.springframework.boot:spring-boot-starter-quartz')
+	runtimeOnly('mysql:mysql-connector-java')
+	compileOnly('org.projectlombok:lombok')
+	testImplementation('org.springframework.boot:spring-boot-starter-test')
+	testImplementation('org.springframework.batch:spring-batch-test')
+}
+
+

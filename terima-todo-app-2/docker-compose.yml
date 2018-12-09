@@ -1,0 +1,27 @@
+version: "3.3"
+
+services: 
+  mysql-todo-container:
+      image: mysql/mysql-server:5.7.24
+      environment: 
+        - MYSQL_ROOT_PASSWORD=admin
+        - MYSQL_DATABASE=todo_month_db
+        - MYSQL_USER=root
+        - MYSQL_PASSWORD=root
+      ports:
+          - 8002:3306
+      volumes: 
+        - /data/mysql
+  terima-todo-app2:
+        image: terima-todo-app2
+        build:
+          context: ./
+          dockerfile: Dockerfile
+        depends_on: 
+          - mysql-todo-container
+        ports:
+          - 8001:3003
+        volumes:
+          - /data/terima-todo-app
+     
+          
